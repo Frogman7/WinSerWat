@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <PackageId>WinSerWat</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Max Blumenthal</Authors>
+    <Company />
+    <Product>Windows Service Watcher</Product>
+    <Description>A configurable library for monitoring and controlling a Windows service using a windows system tray icon.</Description>
+    <Copyright>Copyright 2017 Max Blumenthal</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MS-PL</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Frogman7/WinSerWat</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+</Project>

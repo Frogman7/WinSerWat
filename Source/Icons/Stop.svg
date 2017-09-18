@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   data-name="Stop button"
+   viewBox="0 0 52 52"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="StopSVG.svg"
+   width="52"
+   height="52"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>stop</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview12"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="20.538732"
+     inkscape:cx="21.799017"
+     inkscape:cy="23.755753"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <title
+     id="title2">stop</title>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="BackgroundLayer">
+    <g
+       style=""
+       id="g4502">
+      <path
+         sodipodi:nodetypes="cssssssscc"
+         inkscape:transform-center-y="-1.0224584"
+         inkscape:transform-center-x="-0.097376993"
+         inkscape:connector-curvature="0"
+         id="path4499"
+         d="M 21.298606,47.787644 C 16.527689,46.744052 12.621484,44.529127 9.1425453,40.894819 5.2053805,36.781821 3.1684351,31.678307 3.1723083,25.936543 3.1793189,15.543931 10.036538,6.8211402 20.291477,4.1599407 c 3.109076,-0.8068176 8.022808,-0.8200715 11.078416,-0.029881 5.725585,1.4806543 10.27004,4.6069067 13.348393,9.1827173 2.838983,4.220001 3.911316,7.678008 3.914651,12.623766 0.0057,8.453226 -4.837968,16.142183 -12.515153,19.866848 -1.424367,0.691047 -3.366686,1.462077 -4.316265,1.713395 -2.420015,0.640495 -8.138835,0.787974 -10.502913,0.270858 z"
+         style="fill:#d40000;fill-opacity:1;stroke:none;stroke-width:5.38518858;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="ForegroundLayer">
+    <path
+       style=""
+       d="M 26,0 A 26,26 0 1 0 52,26 26,26 0 0 0 26,0 Z m 0,48 A 22,22 0 1 1 48,26 22,22 0 0 1 26,48 Z M 36,33.5 A 2.5,2.5 0 0 1 33.5,36 h -15 A 2.5,2.5 0 0 1 16,33.5 v -15 A 2.5,2.5 0 0 1 18.5,16 h 15 a 2.5,2.5 0 0 1 2.5,2.5 z"
+       id="path4"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
