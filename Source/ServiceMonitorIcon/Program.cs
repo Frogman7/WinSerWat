@@ -95,7 +95,7 @@ namespace ServiceMonitorIcon
                     iconSettings.UnpausingIcon = new Icon(resumingIconUri);
                 }
 
-                Application.Run(new ServiceWatcher("Spooler", iconSettings, true));
+                Application.Run(new ServiceWatcher(serviceName, iconSettings, true));
             }
             catch (Exception exception)
             {
