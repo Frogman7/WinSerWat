@@ -7,7 +7,7 @@
     <Company />
     <Product>Windows Service Watcher</Product>
     <Description>A configurable library for monitoring and controlling a Windows service using a windows system tray icon.</Description>
-    <Copyright>Copyright 2017 Max Blumenthal</Copyright>
+    <Copyright>Copyright 2018 Max Blumenthal</Copyright>
     <PackageLicenseUrl>https://opensource.org/licenses/MS-PL</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Frogman7/WinSerWat</PackageProjectUrl>
   </PropertyGroup>

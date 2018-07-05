@@ -5,32 +5,26 @@ namespace WinSerWat
 {
     public class WinSerWatMenuItem
     {
-        public MenuItem MenuItem { get; }
-
         protected ServiceStatus enabledStatus;
 
-        public WinSerWatMenuItem(string menuItemText, Action action, ServiceStatus enabledStatus)
+        protected Func<bool> CheckEnabled;
+
+        public MenuItem MenuItem { get; }
+
+        public WinSerWatMenuItem(string menuItemText, Action action) :
+            this(menuItemText, action, new Func<bool>(() => true))
+        {
+        }
+
+        public WinSerWatMenuItem(string menuItemText, Action action, Func<bool> checkEnabled)
         {
             this.MenuItem = new MenuItem(menuItemText, (obj, args) => action());
-            this.enabledStatus = enabledStatus;
+            this.CheckEnabled = checkEnabled;
         }
 
-        public WinSerWatMenuItem(MenuItem menuItem, ServiceStatus enabledStatus)
+        public void CheckForEnabledChange()
         {
-            this.MenuItem = menuItem;
-            this.enabledStatus = enabledStatus;
-        }
-
-        public void StateChanged(ServiceStatus serviceStatus)
-        {
-            if ((enabledStatus & serviceStatus) > 0)
-            {
-                this.MenuItem.Visible = true;
-            }
-            else
-            {
-                this.MenuItem.Visible = false;
-            }
+            this.MenuItem.Visible = this.CheckEnabled();
         }
     }
 }

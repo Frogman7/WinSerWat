@@ -13,10 +13,12 @@ namespace WinSerWat
 
         public ContextMenu ContextMenu
         {
-            get
-            {
-                return this.contextMenu;
-            }
+            get => this.contextMenu;
+        }
+
+        public IEnumerable<WinSerWatMenuItem> WinSerWatMenuItems
+        {
+            get => this.winSerWatMenuItems;
         }
 
         public WinSerWatContextMenuManager()
@@ -33,18 +35,28 @@ namespace WinSerWat
             lock (this.locker)
             {
                 this.winSerWatMenuItems.Add(winSerWatMenuItem);
-            }
 
-            this.contextMenu.MenuItems.Add(winSerWatMenuItem.MenuItem);
+                this.contextMenu.MenuItems.Add(winSerWatMenuItem.MenuItem);
+            }
         }
 
-        public void UpdateContextMenu(ServiceStatus newServiceStatus)
+        public void RemoveWinSerWatMenuItem(WinSerWatMenuItem winSerWatMenuItem)
+        {
+            lock (this.locker)
+            {
+                this.winSerWatMenuItems.Remove(winSerWatMenuItem);
+
+                this.contextMenu.MenuItems.Remove(winSerWatMenuItem.MenuItem);
+            }
+        }
+
+        internal void UpdateContextMenu()
         {
             lock (this.locker)
             {
                 for (int index = 0; index < winSerWatMenuItems.Count; index++)
                 {
-                    winSerWatMenuItems[index].StateChanged(newServiceStatus);
+                    winSerWatMenuItems[index].CheckForEnabledChange();
                 }
             }
         }

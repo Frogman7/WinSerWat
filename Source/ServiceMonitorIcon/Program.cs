@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using WinSerWat;
 
@@ -8,24 +9,6 @@ namespace ServiceMonitorIcon
 {
     class Program
     {
-        private const string ServiceToWatchAppSettingsKey = "ServiceToWatch";
-
-        private const string RunningIconAppSettingKey = "RunningIcon";
-
-        private const string StoppedIconAppSettingKey = "StoppedIcon";
-
-        private const string PausedIconAppSettingKey = "PausedIcon";
-
-        private const string StartingIconAppSettingKey = "StartingIcon";
-
-        private const string StoppingIconAppSettingKey = "StoppingIcon";
-
-        private const string PausingIconAppSettingKey = "PausingIcon";
-
-        private const string ResumingIconAppSettingKey = "ResumingIcon";
-
-        private const int DefaultPollIntervalSeconds = 1;
-
         [STAThread]
         static void Main(string[] args)
         {
@@ -34,73 +17,83 @@ namespace ServiceMonitorIcon
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                string serviceName = ConfigurationManager.AppSettings[ServiceToWatchAppSettingsKey];
+                // Set the working directory to the directory of the executable
+                string executableDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                Directory.SetCurrentDirectory(executableDirectory);
 
-                if (string.IsNullOrWhiteSpace(serviceName))
+                var configuration = new Configuration();
+
+                // If the service has never been setup open the configuration view
+                if (string.IsNullOrEmpty(configuration.ServiceToMonitor))
                 {
-                    throw new ConfigurationErrorsException("A valid service name must be provided!");
+                    var configurationForm = new ConfigurationForm(configuration);
+                    configurationForm.StartPosition = FormStartPosition.CenterScreen;
+                    configurationForm.ShowDialog();
                 }
 
-                var iconSettings = new IconSettings()
+                var iconSettings = new IconSettings();
+
+                var assignIconsAction = new Action(() =>
                 {
-                    PollServiceStatusInterval = TimeSpan.FromSeconds(DefaultPollIntervalSeconds)
+                    iconSettings.RunningIcon = AttemptToLoadIcon("Running", configuration.RunningIconPath, true);
+                    iconSettings.StoppedIcon = AttemptToLoadIcon("Stopped", configuration.StoppedIconPath, true);
+                    iconSettings.PausedIcon = AttemptToLoadIcon("Paused", configuration.PausedIconPath, true);
+                    iconSettings.StartingIcon = AttemptToLoadIcon("Starting", configuration.StartingIconPath);
+                    iconSettings.StoppingIcon = AttemptToLoadIcon("Stopping", configuration.StoppingIconPath);
+                    iconSettings.PausingIcon = AttemptToLoadIcon("Pausing", configuration.PausingIconPath);
+                    iconSettings.UnpausingIcon = AttemptToLoadIcon("Unpausing", configuration.UnpausingIconPath);
+                });
+
+                assignIconsAction();
+
+                ServiceWatcher serviceWatcher = null;
+
+                var winSerWatContextMenuManager = new WinSerWatContextMenuManager();
+                winSerWatContextMenuManager.AddWinSerWatMenuItem(
+                    new WinSerWatMenuItem("Configure", () =>
+                    {
+                        var configurationForm = new ConfigurationForm(configuration);
+                        configurationForm.StartPosition = FormStartPosition.CenterScreen;
+                        configurationForm.ShowDialog();
+                        assignIconsAction();
+                        serviceWatcher.PollServiceStatusInterval = TimeSpan.FromMilliseconds(configuration.PollRate);
+                        serviceWatcher.WaitForStateChangeTimeout = TimeSpan.FromMilliseconds(configuration.WaitForStateTimeout);
+                        serviceWatcher.ChangeService(configuration.ServiceToMonitor);
+                    }));
+
+                serviceWatcher = new ServiceWatcher(configuration.ServiceToMonitor, iconSettings, winSerWatContextMenuManager)
+                {
+                    PollServiceStatusInterval = TimeSpan.FromMilliseconds(configuration.PollRate),
+                    WaitForStateChangeTimeout = TimeSpan.FromMilliseconds(configuration.WaitForStateTimeout)
                 };
 
-                string runningIconUri = ConfigurationManager.AppSettings[RunningIconAppSettingKey];
+                serviceWatcher.StartWatching();
 
-                if (!string.IsNullOrWhiteSpace(runningIconUri))
-                {
-                    iconSettings.RunningIcon = new Icon(runningIconUri);
-                }
-
-                string stoppedIconUri = ConfigurationManager.AppSettings[StoppedIconAppSettingKey];
-
-                if (!string.IsNullOrWhiteSpace(stoppedIconUri))
-                {
-                    iconSettings.StoppedIcon = new Icon(stoppedIconUri);
-                }
-
-                string pausedIconUri = ConfigurationManager.AppSettings[PausedIconAppSettingKey];
-
-                if (!string.IsNullOrWhiteSpace(pausedIconUri))
-                {
-                    iconSettings.PausedIcon = new Icon(pausedIconUri);
-                }
-
-                string startingIconUri = ConfigurationManager.AppSettings[StartingIconAppSettingKey];
-
-                if (!string.IsNullOrWhiteSpace(startingIconUri))
-                {
-                    iconSettings.StartingIcon = new Icon(startingIconUri);
-                }
-
-                string stoppingIconUri = ConfigurationManager.AppSettings[StoppedIconAppSettingKey];
-
-                if (!string.IsNullOrWhiteSpace(stoppingIconUri))
-                {
-                    iconSettings.StoppingIcon = new Icon(stoppingIconUri);
-                }
-
-                string pausingIconUri = ConfigurationManager.AppSettings[PausedIconAppSettingKey];
-
-                if (!string.IsNullOrWhiteSpace(pausingIconUri))
-                {
-                    iconSettings.PausingIcon = new Icon(pausingIconUri);
-                }
-
-                string resumingIconUri = ConfigurationManager.AppSettings[ResumingIconAppSettingKey];
-
-                if (!string.IsNullOrWhiteSpace(resumingIconUri))
-                {
-                    iconSettings.UnpausingIcon = new Icon(resumingIconUri);
-                }
-
-                Application.Run(new ServiceWatcher(serviceName, iconSettings, true));
+                Application.Run(serviceWatcher);
             }
             catch (Exception exception)
             {
                 MessageBox.Show("Service Monitor Icon Failed To Start with an exception: " + exception.Message);
             }
+        }
+
+        private static Icon AttemptToLoadIcon(string iconName, string iconPath, bool mandatory = false)
+        {
+            Icon icon = null;
+
+            if (File.Exists(iconPath))
+            {
+                icon = new Icon(iconPath);
+            }
+            else
+            {
+                if (mandatory)
+                {
+                    throw new FileNotFoundException($"The path to the mandatory icon '{iconName}' could not be resolved with the path provided", iconPath);
+                }
+            }
+
+            return icon;
         }
     }
 }

@@ -1,10 +1,12 @@
 All icons were obtained from the Noun Project (https://thenounproject.com) under the Creative Commons 3.0 license.
 https://creativecommons.org/licenses/by/3.0/us/
 
-'Play' icon by Adrien Coquet, the undedited original is included with the source code 'noun_1019057_cc'
-'Stop' icon by Ismael Ruiz, the undedited original is included with the source code 'noun_552216_cc.svg'
-'Pause' icon by Shastry, the undedited original is included with the source code 'noun_806163_cc.svg'
+'Play' icon by Adrien Coquet, the unedited original is included with the source code 'noun_1019057_cc'
+'Stop' icon by Ismael Ruiz, the unedited original is included with the source code 'noun_552216_cc.svg'
+'Pause' icon by Shastry, the unedited original is included with the source code 'noun_806163_cc.svg'
+'configuration' icon by ImageCatalog, the unedited original is included with the source code 'noun_configuration_406884.svg'
 
-Play was modified with a green background, saved as Play.svg (included with source code), and then converted to a Icon name Play.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
-Stop was modified with a red background, saved as Stop.svg (included with source code), and then converted to a Icon name Stop.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
-Pause was modified with a cyan background, saved as Pause.svg (included with source code), and then converted to a Icon name Pause.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
+'Play' was modified with a green background, removed the attribution information contained on the image itself, saved as Play.svg (included with source code), and then converted to a Icon name Play.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
+'Stop' was modified with a red background, removed the attribution information contained on the image itself, saved as Stop.svg (included with source code), and then converted to a Icon name Stop.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
+'Pause' was modified with a cyan background, removed the attribution information contained on the image itself, saved as Pause.svg (included with source code), and then converted to a Icon name Pause.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
+'configuration' was modified by removing the attribution information contained on the image itself and then coverted to an Icon named 'Configuration.ico' with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.

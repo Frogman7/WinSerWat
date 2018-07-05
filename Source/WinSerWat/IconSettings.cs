@@ -20,25 +20,23 @@ namespace WinSerWat
 
         public Icon UnpausingIcon { get; set; }
 
-        public TimeSpan PollServiceStatusInterval { get; set; }
-
-        public Icon GetAppropriateIcon(ServiceControllerStatus serviceControllerStatus)
+        public Icon GetAppropriateIcon(ServiceStatus serviceControllerStatus)
         {
             switch (serviceControllerStatus)
             {
-                case ServiceControllerStatus.Stopped:
+                case ServiceStatus.Stopped:
                     return this.StoppedIcon;
-                case ServiceControllerStatus.StartPending:
+                case ServiceStatus.StartPending:
                     return this.StartingIcon;
-                case ServiceControllerStatus.StopPending:
+                case ServiceStatus.StopPending:
                     return this.StoppingIcon;
-                case ServiceControllerStatus.Running:
+                case ServiceStatus.Running:
                     return this.RunningIcon;
-                case ServiceControllerStatus.ContinuePending:
+                case ServiceStatus.ContinuePending:
                     return this.UnpausingIcon;
-                case ServiceControllerStatus.PausePending:
+                case ServiceStatus.PausePending:
                     return this.PausingIcon;
-                case ServiceControllerStatus.Paused:
+                case ServiceStatus.Paused:
                     return this.PausedIcon;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(serviceControllerStatus));
