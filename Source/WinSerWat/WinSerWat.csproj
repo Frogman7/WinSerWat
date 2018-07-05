@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <PackageId>WinSerWat</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.8.0</Version>
     <Authors>Max Blumenthal</Authors>
     <Company />
     <Product>Windows Service Watcher</Product>
