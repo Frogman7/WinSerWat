@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <PackageId>WinSerWat</PackageId>
+    <Title>Windows Service Watcher Library</Title>
     <Version>0.8.0</Version>
     <Authors>Max Blumenthal</Authors>
     <Company />
@@ -10,6 +11,7 @@
     <Copyright>Copyright 2018 Max Blumenthal</Copyright>
     <PackageLicenseUrl>https://opensource.org/licenses/MS-PL</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Frogman7/WinSerWat</PackageProjectUrl>
+    <PackageReleaseNotes>Added additional support for re-configuring on the fly.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
