@@ -9,4 +9,5 @@ https://creativecommons.org/licenses/by/3.0/us/
 'Play' was modified with a green background, removed the attribution information contained on the image itself, saved as Play.svg (included with source code), and then converted to a Icon name Play.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
 'Stop' was modified with a red background, removed the attribution information contained on the image itself, saved as Stop.svg (included with source code), and then converted to a Icon name Stop.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
 'Pause' was modified with a cyan background, removed the attribution information contained on the image itself, saved as Pause.svg (included with source code), and then converted to a Icon name Pause.ico with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
-'configuration' was modified by removing the attribution information contained on the image itself and then coverted to an Icon named 'Configuration.ico' with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
+'Configuration' was modified by removing the attribution information contained on the image itself and then coverted to an Icon named 'Configuration.ico' with 16x16, 32x32, 64x64, 128x128, and 256x256 sizes.
+'Starting' is sort of a combination of the modified 'Play' and 'Stop' mentioned above.
